@@ -23,13 +23,10 @@ TEST(foo, doo) {
 
   // InSequence s;
 
-  // EXPECT_CALL(sensor, goo()).WillOnce(Return(1));
-
   EXPECT_CALL(sensor, goo()).WillOnce(Return(3)).WillOnce(Return(1)).WillOnce(Return(3));
 
   EXPECT_CALL(actor, doo(3)).Times(1).RetiresOnSaturation();
   EXPECT_CALL(actor, doo(1)).Times(1).RetiresOnSaturation();
-  EXPECT_CALL(actor, doo(3)).Times(1).RetiresOnSaturation();
   EXPECT_CALL(actor, doo(3)).Times(1).RetiresOnSaturation();
 
   foo(3, &actor, &sensor);
